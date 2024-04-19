@@ -49,6 +49,15 @@ jobs:
           repository: 'koupleless/samples'
           path: 'samples'
 
+      - name: Checkout adapter Repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'koupleless/adapter'
+          path: 'adapter'
+
+      - name: Build adapter and install
+        run: cd adapter && ./script/ci_build.sh 17 install
+
       - name: Test Env prepare
         run: |
           sudo apt-get update >>/tmp/envprepare.out
